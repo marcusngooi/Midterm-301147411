@@ -26,8 +26,10 @@ router.get("/add", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
+
   res.render("books/details", {
     title: "Add Book",
+    books: "",
   });
 });
 
@@ -36,15 +38,14 @@ router.post("/add", (req, res, next) => {
   /*****************
    * ADD CODE HERE *
    *****************/
-  let newBook = Book({
-    Title: req.body.Title,
-    //Description: req.body.Description,
-    Price: req.body.Price,
-    Author: req.body.Author,
-    Genre: req.body.Genre,
+  let newBook = book({
+    Title: req.body.title,
+    Price: req.body.price,
+    Author: req.body.author,
+    Genre: req.body.genre,
   });
 
-  book.create(newBook, (err, Contact) => {
+  book.create(newBook, (err, book) => {
     if (err) {
       console.log(err);
       res.end(err);
@@ -70,7 +71,7 @@ router.get("/:id", (req, res, next) => {
       // show the details view
       res.render("books/details", {
         title: "Edit Book",
-        book: bookToEdit,
+        books: bookToEdit,
       });
     }
   });
@@ -83,13 +84,12 @@ router.post("/:id", (req, res, next) => {
    *****************/
   let id = req.params.id;
 
-  let editedBook = Book({
+  let editedBook = book({
     _id: id,
-    Title: req.body.Title,
-    //Description: req.body.Description,
-    Price: req.body.Price,
-    Author: req.body.Author,
-    Genre: req.body.Genre,
+    Title: req.body.title,
+    Price: req.body.price,
+    Author: req.body.author,
+    Genre: req.body.genre,
   });
 
   book.updateOne({ _id: id }, editedBook, (err) => {

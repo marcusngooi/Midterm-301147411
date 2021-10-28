@@ -45,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/marcusngooi/Midterm-301147411.git"
   },
   "keywords": [
     "NodeJS",
@@ -55,7 +55,7 @@
   "author": "Marcus Ngooi",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/marcusngooi/Midterm-301147411/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/marcusngooi/Midterm-301147411#readme"
 }

@@ -44,13 +44,13 @@ router.post("/add", (req, res, next) => {
     Genre: req.body.Genre,
   });
 
-  Book.create(newBook, (err, Contact) => {
+  book.create(newBook, (err, Contact) => {
     if (err) {
       console.log(err);
       res.end(err);
     } else {
       // refresh the favourite books list
-      res.redirect("/books-index");
+      res.redirect("/books");
     }
   });
 });
@@ -62,7 +62,7 @@ router.get("/:id", (req, res, next) => {
    *****************/
   let id = req.params.id;
 
-  Book.findById(id, (err, bookToEdit) => {
+  book.findById(id, (err, bookToEdit) => {
     if (err) {
       console.log(err);
       res.end(err);
@@ -92,13 +92,13 @@ router.post("/:id", (req, res, next) => {
     Genre: req.body.Genre,
   });
 
-  Book.updateOne({ _id: id }, editedBook, (err) => {
+  book.updateOne({ _id: id }, editedBook, (err) => {
     if (err) {
       console.log(err);
       res.end(err);
     } else {
       // refresh the book list
-      res.redirect("/books-index");
+      res.redirect("/books");
     }
   });
 });
@@ -110,13 +110,13 @@ router.get("/delete/:id", (req, res, next) => {
    *****************/
   let id = req.params.id;
 
-  Book.remove({ _id: id }, (err) => {
+  book.remove({ _id: id }, (err) => {
     if (err) {
       console.log(err);
       res.end(err);
     } else {
       // refresh the book list
-      res.redirect("/books-index");
+      res.redirect("/books");
     }
   });
 });

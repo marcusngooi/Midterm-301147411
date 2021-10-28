@@ -1,3 +1,11 @@
+/*  COMP229-013 F2021
+    Midterm
+    File Name:      routes/books.js
+    Author's Name:  Marcus Ngooi
+    Student #:      301147411
+    Web App Name:   Midterm Project - the Favourite Book List App
+ */
+
 // modules required for routing
 let express = require("express");
 let router = express.Router();
@@ -8,7 +16,7 @@ let book = require("../models/books");
 
 /* GET books List page. READ */
 router.get("/", (req, res, next) => {
-  // find all books in the books collection
+  // Find all books in the books collection
   book.find((err, books) => {
     if (err) {
       return console.error(err);
@@ -45,6 +53,7 @@ router.post("/add", (req, res, next) => {
     Genre: req.body.genre,
   });
 
+  // Create new book and add it to the books collection
   book.create(newBook, (err, book) => {
     if (err) {
       console.log(err);
@@ -63,6 +72,7 @@ router.get("/:id", (req, res, next) => {
    *****************/
   let id = req.params.id;
 
+  // Find book in books collection using id
   book.findById(id, (err, bookToEdit) => {
     if (err) {
       console.log(err);
@@ -92,6 +102,7 @@ router.post("/:id", (req, res, next) => {
     Genre: req.body.genre,
   });
 
+  // Update book in books collection identified by _id
   book.updateOne({ _id: id }, editedBook, (err) => {
     if (err) {
       console.log(err);
@@ -110,6 +121,7 @@ router.get("/delete/:id", (req, res, next) => {
    *****************/
   let id = req.params.id;
 
+  // Remove book from books collection based on _id
   book.remove({ _id: id }, (err) => {
     if (err) {
       console.log(err);

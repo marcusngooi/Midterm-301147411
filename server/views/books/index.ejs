@@ -16,7 +16,7 @@
         <table class="table table-bordered table-striped table-hover">
           <thead>
             <tr>
-              <th>Title</th>
+              <th class="text-center">Title</th>
               <th class="text-center">Price</th>
               <th class="text-center">Author</th>
               <th class="text-center">Genre</th>
@@ -28,7 +28,7 @@
             <!-- Template Row -->
             <% for (let count = 0; count < books.length; count++) { %>
             <tr>
-              <td><%= books[count].Title %></td>
+              <td class="text-center"><%= books[count].Title %></td>
               <td class="text-center">$<%= books[count].Price %></td>
               <td class="text-center"><%= books[count].Author %></td>
               <td class="text-center"><%= books[count].Genre %></td>
@@ -41,7 +41,7 @@
                   href="/books/<%= books[count]._id %>"
                   class="btn btn-primary"
                 >
-                  <i class="fas fa-pencil-alt"></i> Edit</a
+                  Edit</a
                 >
               </td>
 
@@ -53,7 +53,7 @@
                   href="/books/delete/<%= books[count]._id %>"
                   class="btn btn-danger"
                 >
-                  <i class="fas fa-pencil-alt"></i> Delete</a
+                  Delete</a
                 >
               </td>
             </tr>
